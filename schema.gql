@@ -1,0 +1,768 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
+
+union Media = Gallery | Unsplash
+
+type Activity {
+    attachments: [Media!]!
+    cover: Media!
+    description: String!
+    endTime: String!
+    id: ID!
+    routineId: Int!
+    startTime: String!
+    title: String!
+    youtubeUrl: String
+}
+
+type Category {
+    bannerImage: CloudinaryMedia!
+    categoryPromoSettings: CategoryPromoSettings!
+    categoryPromoSettingsId: Int
+    id: ID!
+    image: CloudinaryMedia!
+    routinesCount: Int!
+    s1BannerImage: String
+    title: String!
+}
+
+type CategoryPromoSettings {
+    id: ID!
+    s1BannerImage: String!
+    s1Heading: String!
+    s1Text: String!
+    s2Benefit1Image: String!
+    s2Benefit1Text: String!
+    s2Benefit2Image: String!
+    s2Benefit2Text: String!
+    s2Benefit3Image: String!
+    s2Benefit3Text: String!
+    s2Benefit4Image: String!
+    s2Benefit4Text: String!
+    s2Heading: String!
+    s3Heading: String!
+    s3Offer1: String!
+    s3Offer2: String!
+    s3Offer3: String!
+    s3Offer4: String!
+    s3Offer5: String!
+    s3Offer6: String!
+    s4TestimonialBanner: String
+    s4TestimonialText: String!
+    s5Category: Category!
+    s5CategoryId: Int!
+    s5Text: String!
+    s6Category: Category!
+    s6CategoryId: Int!
+    s6Text: String!
+    s7Heading: String!
+    titleTagText: String
+}
+
+type Charge {
+    amount: Float!
+    createdAt: String!
+    id: ID!
+    routineTitle: String!
+}
+
+type CloudinaryMedia {
+    bytes: Int
+    file_name: String
+    filename: String
+    format: String
+    original_filename: String
+    resource_type: String!
+    secure_url: String!
+    type: String
+    url: String!
+}
+
+type DashboardInfo {
+    followers: [Follower!]!
+    revenue: Int!
+    stripeAccount: StripeAccount
+    stripeAccountId: Int
+    stripeAccountStatus: String!
+    stripeCustomerId: String
+}
+
+type Day {
+    activities: [Activity!]!
+    id: ID!
+    repetitionEndDate: String
+    repetitionType: Int!
+    routineId: Int!
+    weekday: Int!
+}
+
+type Follower {
+    avatar: String!
+    displayName: String!
+    email: String!
+    handle: String!
+    id: ID!
+    slug: String!
+}
+
+type Gallery {
+    filename: String!
+    id: ID!
+    previewUrl: String!
+    resource_type: String!
+    url: String!
+}
+
+type GalleryModelEdge {
+    cursor: String!
+    node: Gallery!
+}
+
+type Influencer {
+    admin: Boolean!
+    avatar: String!
+    background: String!
+    createdAt: String!
+    description: String!
+    displayName: String!
+    email: String!
+    firstName: String!
+    followers: [Follower!]!
+    handle: String!
+    id: ID!
+    lastName: String!
+    memberships: [Membership!]!
+    membershipsCount: Int!
+    postsCount: Int!
+    routinesCount: Int!
+    slug: String!
+    socials: Socials
+}
+
+type Me {
+    admin: Boolean!
+    avatar: String!
+    description: String!
+    displayName: String!
+    email: String!
+    firstName: String!
+    followers: [Follower!]!
+    handle: String!
+    id: ID!
+    lastName: String!
+    membershipsCount: Int!
+    notifications: [Notification!]!
+    postsCount: Int!
+    routinesCount: Int!
+    slug: String!
+    stripeAccountId: Int
+    stripeCustomerId: String
+    timezone: String!
+    unreadNotificationsCount: Int!
+}
+
+type Membership {
+    address: Boolean!
+    content: String!
+    cover: Media!
+    creator: User!
+    description: String!
+    id: ID!
+    isFixed: Boolean!
+    isSubscribed: Boolean!
+    price: Float!
+    public: Boolean!
+    recurrence: String!
+    status: String!
+    stripePlanId: String!
+    title: String!
+}
+
+type MembershipEdge {
+    cursor: String!
+    node: Membership!
+}
+
+type MembershipInfo {
+    buyers: Int!
+    content: String!
+    cover: Media!
+    description: String!
+    id: ID!
+    includeAddress: Boolean!
+    isPublic: Boolean!
+    price: Float!
+    recurrence: String!
+    revenue: Float!
+    status: String!
+    title: String!
+}
+
+type MembershipInfoEdge {
+    cursor: String!
+    node: MembershipInfo!
+}
+
+type MembershipInfoPaginated {
+    edges: [MembershipInfoEdge!]
+    pageInfo: PageInfo
+}
+
+type MembershipPaginated {
+    edges: [MembershipEdge!]
+    pageInfo: PageInfo
+}
+
+type Mutation {
+    addRoutineToPlan(routineId: Int!): Plan!
+    changeActivityCover(updateCoverData: UpdateActivityCoverInput!): Activity!
+    changePostCover(updateCoverData: UpdatePostCoverInput!): Post!
+    changeRoutineStartDate(routineId: Int!, startDate: String!): Plan!
+    cloneRoutine(id: Int!): Routine!
+    createActivity(activityData: CreateActivityInput!): Activity!
+    createDay(dayData: CreateDayInput!): Day!
+    createMembership(membershipData: CreateMembershipInput!): Membership!
+    createPost(postData: CreatePostInput!): Post!
+    createRoutine(routineData: CreateRoutineInput!): Routine!
+    createStripeAccount(countryId: String!): String!
+    deleteActivity(activityId: Int!): Activity!
+    deleteDay(dayId: Int!): Day!
+    deleteMembership(id: Int!): Membership!
+    deletePost(id: Int!): Post!
+    deleteRoutine(id: Int!): Routine!
+    markAllAsRead: Notification!
+    markAsReadById(notificationId: Int!): [Int!]!
+    removeCard(paymentMethodId: String!): PaymentCard!
+    removeRoutineFromPlan(routineId: Int!): Plan!
+    updateActivity(activityData: UpdateActivityInput!): Activity!
+    updateDay(dayData: UpdateDayInput!): Day!
+    updateMe(meInfo: UpdateMeInput!): Me!
+    updateMembership(membershipData: UpdateMembershipInput!): Membership!
+    updateMyTimeZone(timezone: String!): Me!
+    updatePost(postData: UpdatePostInput!): Post!
+    updateRoutine(routineData: UpdateRoutineInput!): Routine!
+    updateSubscriptionStatus(updateSubscription: UpdateSubscriptionInput!): Subscription!
+    updateTime(plannedActivityData: UpdatePlannedActivityInput!): PlannedActivity!
+}
+
+type Notification {
+    asType: String!
+    createdAt: DateTime!
+    id: ID!
+    markAsRead: Boolean!
+    message: String!
+    notifiableType: String!
+    title: String!
+}
+
+type PageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+    totalCount: Int!
+}
+
+type PaginatedGalleryModel {
+    edges: [GalleryModelEdge!]
+    pageInfo: PageInfo
+}
+
+type PaymentCard {
+    brand: String!
+    expMonth: Int!
+    expYear: Int!
+    id: ID!
+    last4: String!
+}
+
+type Plan {
+    id: ID!
+}
+
+type PlannedActivity {
+    activity: Activity!
+    endTime: String!
+    id: ID!
+    plannedDay: PlannedDay!
+    startTime: String!
+}
+
+type PlannedDay {
+    date: String!
+    id: ID!
+    plannedActivities: [PlannedActivity!]!
+}
+
+type Post {
+    attachments: [Media!]!
+    cover: Media!
+    createdAt: String!
+    creator: User!
+    description: String!
+    id: ID!
+    isLocked: Boolean
+    isPremium: Boolean!
+    membership: Membership
+    membershipId: Int
+    membershipType: String!
+    published: Boolean!
+    slug: String!
+    status: String!
+    tags: [String!]!
+    title: String!
+    youtubeUrl: String
+}
+
+type PostEdge {
+    cursor: String!
+    node: Post!
+}
+
+type PostPaginated {
+    edges: [PostEdge!]
+    pageInfo: PageInfo
+}
+
+type Query {
+    cardSetupIntent: String!
+    categories: [Category!]!
+    category(title: String!): Category!
+    categoryInfluencers(after: String, before: String, categories: [String!]!, first: Int, last: Int): UserPaginated!
+    categoryRoutines(after: String, before: String, categories: [String!]!, contentType: String!, first: Int, last: Int, skipRoutines: [String!], sort: String!): RoutinePaginated!
+    chargesHistory: [Charge!]!
+    customerCharges: String!
+    dashboardInfo: DashboardInfo!
+    dashboardLink: String!
+    getInfluencersRoutines(after: String, before: String, first: Int, influencerId: Int!, last: Int): RoutinePaginated!
+    getMyRoutinesInfo(after: String, before: String, first: Int, last: Int): RoutineInfoPaginated!
+    getPlannedActivityById(plannedActivityId: Int!): PlannedActivity!
+    getPlannedDays(from: String!, to: String!): [PlannedDay!]!
+    getRoutineById(id: Int!): Routine!
+    getRoutineBySlug(slug: String!): Routine!
+    getRoutineInfoById(id: Int!): RoutineInfo!
+    getUnsplash(keyword: String!, page: Int!, perPage: Int!): UnsplashStockPaginated!
+    influencerProfile(slug: String!): Influencer!
+    influencersPosts(after: String, before: String, first: Int, influencerId: Int, last: Int): PostPaginated!
+    mainBanner: String!
+    mainCategory: Category!
+    me: Me!
+    migrationLink: String!
+    myCards: [PaymentCard!]!
+    myGallery(after: String, allowedFormats: [String!]!, before: String, filename: String, first: Int, last: Int): PaginatedGalleryModel!
+    myLeaders: [User!]!
+    myMemberships: [Membership!]!
+    myMembershipsInfo(after: String, before: String, first: Int, last: Int): MembershipInfoPaginated!
+    myNotifications: [Notification!]!
+    myPlanRoutines(after: String, before: String, first: Int, last: Int): RoutinePaginated!
+    myPosts(after: String, before: String, first: Int, last: Int): PostPaginated!
+    myPremiumPosts(after: String, before: String, creatorId: Int, first: Int, last: Int): PostPaginated!
+    mySubscribedMemberships(after: String, before: String, first: Int, last: Int): MembershipPaginated!
+    onboardingLink: String!
+    paymentIntentForMembership(membershipId: Int!, paymentMethodId: String): String!
+    paymentIntentForRoutine(paymentMethodId: String, routineId: Int!): String!
+    postBySlug(slug: String!): Post!
+    randomUnsplash(count: Int!): [UnsplashStock!]!
+    subscriptionByMembership(membershipId: Int!): Subscription!
+    trendyFreeRoutines(after: String, before: String, first: Int, last: Int): RoutinePaginated!
+    trendyRoutines(after: String, before: String, first: Int, last: Int): RoutinePaginated!
+    trendyUsers(after: String, before: String, first: Int, last: Int): UserPaginated!
+    uploadSignature: Signature!
+    userById(userId: Int!): User!
+}
+
+type Routine {
+    attachments: [Media!]!
+    attachmentsCount: Int!
+    benefits: String!
+    categories: [Category!]!
+    cover: Media!
+    creator: User!
+    days: [Day!]!
+    daysCount: Int!
+    description: String!
+    hashtag: String!
+    id: ID!
+    isComplete: Boolean!
+    isFree: Boolean!
+    isPrivate: Boolean!
+    isPublished: Boolean!
+    price: Float!
+    promoVideo: String
+    routineUserInfo: RoutineUserInfo!
+    slug: String!
+    supports: [Media!]!
+    title: String!
+    usageCount: Int!
+    youtubeUrl: String
+}
+
+type RoutineEdge {
+    cursor: String!
+    node: Routine!
+}
+
+type RoutineInfo {
+    buyers: Int!
+    cover: Media!
+    id: ID!
+    isComplete: Boolean!
+    isPrivate: Boolean!
+    isPublished: Boolean!
+    revenue: Float!
+    slug: String!
+    status: String!
+    title: String!
+}
+
+type RoutineInfoEdge {
+    cursor: String!
+    node: RoutineInfo!
+}
+
+type RoutineInfoPaginated {
+    edges: [RoutineInfoEdge!]
+    pageInfo: PageInfo
+}
+
+type RoutinePaginated {
+    edges: [RoutineEdge!]
+    pageInfo: PageInfo
+}
+
+type RoutineUserInfo {
+    isPurchased(userId: Int): Boolean!
+    isUsed(userId: Int): Boolean!
+}
+
+type Signature {
+    signature: String!
+    timestamp: Int!
+}
+
+type Socials {
+    facebook: String
+    id: ID!
+    instagram: String
+    twitter: String
+    youtube: String
+}
+
+type StripeAccount {
+    accountType: String!
+    countryId: String!
+    id: ID!
+    stripeId: String!
+}
+
+type Subscription {
+    id: ID!
+    status: String!
+}
+
+type Unsplash {
+    id: ID!
+    previewUrl: String!
+    resource_type: String!
+    unsplashId: String!
+    url: String!
+    userName: String!
+}
+
+type UnsplashStock {
+    alt_description: String
+    blur_hash: String
+    color: String
+    created_at: String!
+    description: String!
+    height: Int!
+    id: String!
+    likes: Int!
+    links: UnsplashStockLinks!
+    promoted_at: String
+    updated_at: String!
+    urls: UnsplashStockUrls!
+    user: UnsplashStockUser!
+    width: Int!
+}
+
+type UnsplashStockLinks {
+    download: String!
+    download_location: String!
+    html: String!
+    self: String!
+}
+
+type UnsplashStockPaginated {
+    results: [UnsplashStock!]!
+    total: Int!
+    total_pages: Int!
+}
+
+type UnsplashStockUrls {
+    full: String!
+    raw: String!
+    regular: String!
+    small: String!
+    thumb: String!
+}
+
+type UnsplashStockUser {
+    bio: String
+    first_name: String!
+    id: String!
+    instagram_username: String
+    last_name: String
+    location: String
+    name: String!
+    portfolio_url: String
+    total_collections: Int!
+    total_likes: Int!
+    total_photos: Int!
+    twitter_username: String
+    updated_at: String!
+    username: String!
+}
+
+type User {
+    admin: Boolean!
+    avatar: String!
+    description: String!
+    displayName: String!
+    email: String!
+    firstName: String!
+    followers: [Follower!]!
+    handle: String!
+    id: ID!
+    lastName: String!
+    membershipsCount: Int!
+    postsCount: Int!
+    routinesCount: Int!
+    slug: String!
+}
+
+type UserEdge {
+    cursor: String!
+    node: User!
+}
+
+type UserPaginated {
+    edges: [UserEdge!]
+    pageInfo: PageInfo
+}
+
+input CategoryInput {
+    id: Int!
+}
+
+input CloudinaryInput {
+    api_key: String
+    bytes: Int
+    format: String
+    full_file_name: String
+    id: String
+    original_extension: String
+    original_filename: String
+    resource_type: String!
+    routinr_type: String
+    secure_url: String!
+    thumbnail_url: String
+    type: String
+    url: String!
+}
+
+input CreateActivityInput {
+    attachments: [MediaInput!]!
+    dayId: Int!
+    description: String!
+    endTime: String!
+    routineId: Int!
+    startTime: String!
+    title: String!
+    youtubeUrl: String
+}
+
+input CreateDayInput {
+    repetitionEndDate: String
+    repetitionType: Int!
+    routineId: Int!
+    weekday: Int!
+}
+
+input CreateMembershipInput {
+    content: String!
+    cover: MediaInput!
+    description: String!
+    includeAddress: Boolean!
+    price: Float!
+    recurrence: String!
+    title: String!
+}
+
+input CreatePostInput {
+    attachments: [MediaInput!]!
+    description: String!
+    isPremium: Boolean!
+    membershipId: Int
+    membershipType: String!
+    tags: [String!]
+    title: String!
+    youtubeUrl: String
+}
+
+input CreateRoutineInput {
+    benefits: String
+    categories: [CategoryInput!]!
+    description: String!
+    hashtag: String
+    title: String!
+}
+
+input GalleryInput {
+    id: ID!
+}
+
+input MediaInput {
+    cloudinary: CloudinaryInput
+    gallery: GalleryInput
+    isCover: Boolean!
+    type: String!
+    unsplash: UnsplashInput
+}
+
+input MediaToRemoveInput {
+    galleryId: Int
+    isCover: Boolean!
+    type: String!
+    unsplashId: Int
+}
+
+input SocialsInput {
+    facebook: String
+    instagram: String
+    twitter: String
+    youtube: String
+}
+
+input UnsplashInput {
+    id: Int
+    mediumUrl: String!
+    unsplashId: String!
+    url: String!
+    userName: String!
+}
+
+input UpdateActivityCoverInput {
+    activityId: Int!
+    galleryCoverId: Int
+    prevGalleryCoverId: Int
+    prevUnsplashCoverId: Int
+    unsplashCoverId: Int
+}
+
+input UpdateActivityInput {
+    attachments: [MediaInput!]
+    dayId: Int
+    description: String
+    endTime: String
+    id: Int!
+    mediaToRemove: [MediaToRemoveInput!]
+    routineId: Int
+    startTime: String
+    title: String
+    youtubeUrl: String
+}
+
+input UpdateDayInput {
+    id: Int!
+    repetitionEndDate: String
+    repetitionType: Int
+    routineId: Int
+    weekday: Int
+}
+
+input UpdateMeInput {
+    avatar: MediaInput
+    background: MediaInput
+    description: String
+    displayName: String
+    firstName: String
+    handle: String
+    isCreator: Boolean
+    lastName: String
+    socials: SocialsInput
+}
+
+input UpdateMembershipInput {
+    content: String
+    cover: MediaInput
+    description: String
+    id: Int!
+    includeAddress: Boolean
+    isPublic: Boolean
+    price: Float
+    recurrence: String
+    title: String
+}
+
+input UpdatePlannedActivityInput {
+    endTime: String!
+    id: Int!
+    startTime: String!
+}
+
+input UpdatePostCoverInput {
+    galleryCoverId: Int
+    postId: Int!
+    prevGalleryCoverId: Int
+    prevUnsplashCoverId: Int
+    unsplashCoverId: Int
+}
+
+input UpdatePostInput {
+    attachments: [MediaInput!]
+    description: String
+    id: Int!
+    isPremium: Boolean
+    mediaToRemove: [MediaToRemoveInput!]
+    membershipId: Int
+    membershipType: String
+    tags: [String!]
+    title: String
+    youtubeUrl: String
+}
+
+input UpdateRoutineInput {
+    attachments: [MediaInput!]
+    benefits: String
+    categories: [CategoryInput!]
+    cover: MediaInput
+    daysOrder: [Int!]
+    description: String
+    hashtag: String
+    id: Int!
+    isComplete: Boolean
+    isFree: Boolean
+    isPrivate: Boolean
+    isPublished: Boolean
+    mediaToRemove: [MediaToRemoveInput!]
+    price: Float
+    promoVideo: MediaInput
+    supports: [MediaInput!]
+    title: String
+    youtubeUrl: String
+}
+
+input UpdateSubscriptionInput {
+    status: String!
+    subscriptionId: Int!
+}
+
+
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime

@@ -1,0 +1,111 @@
+import React, { useState } from 'react';
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContentText from '@mui/material/DialogContentText';
+
+import { MembershipInfo } from '@store/services/membership/membership.interface';
+import Text from '@components/Text';
+import Button from '@components/Button/Button';
+import {
+  useDeleteMembershipMutation,
+  useUpdateMembershipMutation,
+} from '@store/services/membership';
+import MembershipCreatorModal from '@components/CreatorModals/MembershipCreatorModal';
+
+import { Menu, MenuItem } from '@modules/dashboard/components/Menu';
+
+interface MembershipMenuProps {
+  membership: MembershipInfo;
+  onDelete(): void;
+  onUpdate(): void;
+}
+
+function MembershipMenu({
+  membership,
+  onDelete,
+  onUpdate,
+}: MembershipMenuProps): JSX.Element {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+  const [deleteMembership] = useDeleteMembershipMutation();
+  const [updateMembership] = useUpdateMembershipMutation();
+
+  const handleCloseEdit = () => {
+    setIsEditOpen(false);
+    onUpdate();
+  };
+
+  const handleOpenEdit = () => {
+    setIsEditOpen(true);
+  };
+
+  const handleCloseConfirm = () => {
+    setIsConfirmOpen(false);
+  };
+
+  const handleOpenConfirm = () => {
+    setIsConfirmOpen(true);
+  };
+
+  const handleUnPublish = async () => {
+    await updateMembership({
+      id: Number(membership.id),
+      isPublic: !membership.isPublic,
+    });
+    onUpdate();
+  };
+
+  const handleDelete = async () => {
+    await deleteMembership(Number(membership.id));
+    onDelete();
+    handleCloseConfirm();
+  };
+
+  return (
+    <Menu>
+      <MenuItem onClick={handleOpenEdit}>
+        <Text size="bodySmallBold">Edit</Text>
+      </MenuItem>
+      <MenuItem onClick={handleUnPublish}>
+        <Text size="bodySmallBold">
+          {membership.isPublic ? 'Unpublish' : 'Publish'}
+        </Text>
+      </MenuItem>
+      <MenuItem onClick={handleOpenConfirm}>
+        <Text size="bodySmallBold">Delete</Text>
+      </MenuItem>
+      <Dialog
+        open={isConfirmOpen}
+        onClose={handleCloseConfirm}
+        aria-labelledby="confirm-title"
+        aria-describedby="confirm-description"
+      >
+        <DialogTitle id="confirm-title">Delete confirmation</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="confirm-description">
+            Are you sure you want to delete the membership?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDelete} variant="alert">
+            Yes
+          </Button>
+          <Button onClick={handleCloseConfirm} variant="outlined">
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <MembershipCreatorModal
+        open={isEditOpen}
+        onClose={handleCloseEdit}
+        membership={membership}
+      />
+    </Menu>
+  );
+}
+
+export default MembershipMenu;

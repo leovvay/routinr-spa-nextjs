@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" viewBox="0 0 16 23">
+  <g id="round_lock_opened" data-name="round lock opened" transform="translate(-4)">
+    <circle id="Body" cx="7" cy="7" r="7" transform="translate(5 8)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Keyhole" d="M1,5V3.732a2,2,0,1,1,2,0V5A1,1,0,0,1,1,5Z" transform="translate(10 12)" fill="#fff"/>
+    <path id="Lock" d="M8,8V4A4,4,0,0,0,0,4V8" transform="translate(8 1)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

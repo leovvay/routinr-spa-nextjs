@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .facebook-circle {
+        fill:#3d5a96;
+      }
+      .facebook-icon {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, -9.03, -6)">
+    <circle class="facebook-circle social-circle" cx="24" cy="24" r="24" transform="translate(9 6)"/>
+  </g>
+  <path class="facebook-icon social-icon" d="M6.484,19.5H2.161v-9.21H0V6.745H2.161V4.616C2.161,1.723,3.38,0,6.846,0H9.731V3.549h-1.8c-1.35,0-1.439.5-1.439,1.421L6.484,6.745H9.752l-.383,3.549H6.484V19.5Z" transform="translate(19.279 14.175)"/>
+  <path class="" d="M0,-1 V1 M-1,0 H1" transform="translate(19.279 14.175)"/>
+</svg>

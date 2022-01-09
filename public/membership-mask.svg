@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="97px" height="103px" viewBox="0 0 97 103" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>XMLID_7_ Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M48.4382013,6.77060591 C48.4382013,4.62039251 48.4382013,2.36927525 48.4382013,0 C21.6865382,0 0,21.3169251 0,47.612648 C0,73.9083709 21.6865382,95.225296 48.4382013,95.225296 C48.4382013,97.3868665 48.4382013,99.639731 48.4382013,101.995902 C75.1898644,101.995902 96.8764026,80.6789768 96.8764026,54.3832539 C96.8764026,28.087531 75.1898644,6.77060591 48.4382013,6.77060591 Z" id="path-1"></path>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Influencers-profile-Copy" transform="translate(-177.000000, -706.000000)">
+            <g id="Group-5" transform="translate(177.000000, 706.000000)">
+                <g id="Group-4" transform="translate(0.026517, 0.814760)">
+                    <g id="Group-3">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="XMLID_7_-Copy" fill="#C9CFDB" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

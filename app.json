@@ -1,0 +1,43 @@
+{
+  "name": "routinr-spa-react",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_HOST": {
+      "required": true
+    },
+    "NEXT_PUBLIC_EMBER_HOST": {
+      "required": true
+    },
+    "NEXT_PUBLIC_API_HOST": {
+      "required": true
+    },
+    "NEXT_PUBLIC_CLOUDINARY_API_KEY": {
+      "required": true
+    },
+    "NEXT_PUBLIC_SEGMENT_WRITE_KEY": {
+      "required": true
+    },
+    "NEXT_PUBLIC_STRIPE_PUBLIC_KEY": {
+      "required": true
+    },
+    "NEXT_PUBLIC_COOKIE_DOMAIN": {
+      "required": true
+    },
+    "NEXT_PUBLIC_ALGOLIA_APP_ID": {
+      "required": true
+    },
+    "NEXT_PUBLIC_ALGOLIA_SEARCH_KEY": {
+      "required": true
+    },
+    "NEXT_PUBLIC_ALGOLIA_INFLUENCERS_INDEX": {
+      "required": true
+    },
+    "NEXT_PUBLIC_ALGOLIA_ROUTINES_INDEX": {
+      "required": true
+    }
+  }
+}

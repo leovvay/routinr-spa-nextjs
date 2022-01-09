@@ -1,0 +1,67 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@theme/*": [
+        "theme/*"
+      ],
+      "@utils": [
+        "utils"
+      ],
+      "@hooks": [
+        "hooks"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@globalTypes": [
+        "../globalTypes.d.ts"
+      ],
+      "@constants": [
+        "constants.ts"
+      ],
+      "@public/*": [
+        "../public/*"
+      ]
+    },
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".eslintrc.js",
+    "next.config.js",
+    "globalTypes.d.ts",
+    "react-use-infinite-loader.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

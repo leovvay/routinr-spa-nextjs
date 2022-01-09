@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.867" height="13.5" viewBox="0 0 14.867 13.5">
+  <g id="_32" data-name="32" transform="translate(-0.568 -1.25)">
+    <path id="Body" d="M.008,3.333A3.018,3.018,0,0,1,3.341,0h6.671a3.021,3.021,0,0,1,3.333,3.333" transform="translate(1.325 10.667)" fill="none" stroke="#c9cfdb" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <circle id="Head" cx="3.333" cy="3.333" r="3.333" transform="translate(4.667 2)" fill="none" stroke="#2e7eff" stroke-miterlimit="10" stroke-width="1.5"/>
+  </g>
+</svg>

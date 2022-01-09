@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24.006" height="20" viewBox="0 0 24.006 20">
+  <g id="share" transform="translate(0 -2)">
+    <path id="Behind" d="M1,17a1,1,0,0,1-1-1,5.559,5.559,0,0,1,.606-2.447A4.582,4.582,0,0,1,5,11H8.674A6.994,6.994,0,0,0,10.1,13H5a2.606,2.606,0,0,0-2.606,1.447,3.844,3.844,0,0,0-.345,1.093A3.148,3.148,0,0,0,2,16,1,1,0,0,1,1,17ZM8.275,9.947h0a5,5,0,1,1,4.247-8.5A6.979,6.979,0,0,0,10.663,2.5,3,3,0,1,0,8,7.83C8,7.886,8,7.943,8,8a7.01,7.01,0,0,0,.274,1.946Z" transform="translate(0 2)" fill="#2e7eff"/>
+    <path id="Body" d="M0,4S0,0,4,0h8c4.006,0,4.006,4,4.006,4" transform="translate(7 17)" fill="none" stroke="#2e7eff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <circle id="Head" cx="4" cy="4" r="4" transform="translate(11 6)" fill="none" stroke="#2e7eff" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

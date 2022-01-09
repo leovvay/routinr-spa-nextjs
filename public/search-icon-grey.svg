@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="_3" data-name="3" transform="translate(-2 -2)">
+    <circle id="Glass" cx="7" cy="7" r="7" transform="translate(3 3)" fill="none" stroke="#c9cfdb" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Handle" d="M0,0,6,6" transform="translate(15 15)" fill="none" stroke="#c9cfdb" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>
