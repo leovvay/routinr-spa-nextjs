@@ -6,10 +6,16 @@ import NoSsr from '@mui/material/NoSsr';
 
 import HeaderV2 from '@components/Header_V2';
 import Header from '@components/Header';
-import Footer from '@components/Footer_V2';
-import { User, userApi } from '@store/services/users';
-import { useIsMobileVersion, useSegmentPageEvent, useUser } from '@hooks';
+import FooterV2 from '@components/Footer_V2';
+import Footer from '@components/Footer';
 import { PageWrapper, PageContent } from '@components/PageWrapper';
+import {
+  useIsMobileVersion,
+  useIsTabletVersion,
+  useSegmentPageEvent,
+  useUser,
+} from '@hooks';
+import { User, userApi } from '@store/services/users';
 import { store } from '@store/index';
 import { settingsApi } from '@store/services/settings';
 import { Category } from '@store/services/categories';
@@ -30,6 +36,7 @@ export default function Home({
 }: HomeProps): JSX.Element {
   const { currentUser } = useUser();
   const isMobile = useIsMobileVersion();
+  const isTablet = useIsTabletVersion();
 
   useSegmentPageEvent();
 
@@ -54,11 +61,9 @@ export default function Home({
               mainCategory={mainCategory}
             />
           ))}
-        {!currentUser && (isMobile ? <MobileIndexV2 /> : <DesktopIndexV2 />)}
+        {!currentUser && (isTablet ? <MobileIndexV2 /> : <DesktopIndexV2 />)}
       </PageContent>
-      <NoSsr>
-        <Footer />
-      </NoSsr>
+      <NoSsr>{currentUser ? <Footer /> : <FooterV2 />}</NoSsr>
     </PageWrapper>
   );
 }

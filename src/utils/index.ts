@@ -20,6 +20,7 @@ export { default as unAuthGuardSSR } from './unAuthGuardSSR';
 export { default as getLegacyAuthHeaders } from './getLegacyAuthHeaders';
 export { default as withAuthGuard } from './withAuthGuard';
 export { default as withUnAuthGuardSSR } from './withUnAuthGuardSSR';
+export { default as areAuthCookiesExist } from './areAuthCookiesExist';
 
 export * from './getFormErrors';
 export * from './createInfinityQueryHook';

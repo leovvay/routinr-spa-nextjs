@@ -1,5 +1,6 @@
 import React, { useCallback, useState, MouseEvent } from 'react';
 
+import { useWindowSize } from '@hooks';
 import Text from '@components/Text';
 import RoundButton from '@components/RoundButton';
 import Image from '@components/Image';
@@ -30,6 +31,8 @@ function MobileIndex(): JSX.Element {
     e.preventDefault();
     window.location.href = '/register';
   };
+
+  const screenSize = useWindowSize();
 
   return (
     <>
@@ -131,7 +134,7 @@ function MobileIndex(): JSX.Element {
           marginTop="48px"
           minHeight={478}
         >
-          <Image src="/phone.svg" layout="fill" objectFit="contain" />
+          <Image src="/apple-phone.png" layout="fill" objectFit="contain" />
         </MobileImageContainer>
         <MobileImageContainer
           position="absolute"
@@ -184,18 +187,18 @@ function MobileIndex(): JSX.Element {
           position="relative"
           marginTop="48px"
           width="auto"
-          minHeight={300}
+          minHeight={screenSize.width > 480 ? 10 : 300}
           marginLeft={24}
           marginRight={24}
         >
-          <CardView top="0" left="10%">
-            <RoundImage src="/card-meditation.png" width="100%" height={104} />
-            <CardRow bgColor="#1A2F06" borderRadius gap={16} padding>
+          <CardView top="0" left={screenSize.width > 480 ? '50%' : '10%'}>
+            <RoundImage src="/card_meditation.png" width="100%" height={104} />
+            <CardRow bgColor="#0F090B" borderRadius gap={16} padding>
               <CardColumn>
                 <Text
                   fontSize={14}
                   lineHeight={20}
-                  color="#FDFEFF"
+                  color="#FEA54A"
                   letterSpacing="0.01em"
                   weight={600}
                   fontFamily="var(--font-secondary)"
@@ -212,7 +215,7 @@ function MobileIndex(): JSX.Element {
                   <Text
                     fontSize={12}
                     lineHeight={18}
-                    color="#FDFEFF"
+                    color="#FEA54A"
                     letterSpacing="0.01em"
                     weight={400}
                     fontFamily="var(--font-secondary)"
@@ -241,7 +244,7 @@ function MobileIndex(): JSX.Element {
                   weight={600}
                   fontFamily="var(--font-secondary)"
                 >
-                  Meditation
+                  Fitness
                 </Text>
                 <CardRow gap={5}>
                   <Image
@@ -271,7 +274,7 @@ function MobileIndex(): JSX.Element {
             </CardRow>
           </CardView>
           <CardView top="250px" left="0">
-            <RoundImage src="/card-food.svg" width="100%" height={104} />
+            <RoundImage src="/card-food.png" width="100%" height={104} />
             <CardRow bgColor="#EEF6FF" borderRadius gap={16} padding>
               <CardColumn>
                 <Text
@@ -282,7 +285,7 @@ function MobileIndex(): JSX.Element {
                   weight={600}
                   fontFamily="var(--font-secondary)"
                 >
-                  Meditation
+                  Food
                 </Text>
                 <CardRow gap={5}>
                   <Image
@@ -299,7 +302,7 @@ function MobileIndex(): JSX.Element {
                     weight={400}
                     fontFamily="var(--font-secondary)"
                   >
-                    1 hr
+                    15 min
                   </Text>
                 </CardRow>
               </CardColumn>
@@ -312,26 +315,17 @@ function MobileIndex(): JSX.Element {
             </CardRow>
           </CardView>
         </MobileImageContainer>
-        <MobileImageContainer position="relative" minHeight={400}>
+        <MobileImageContainer
+          position="relative"
+          minHeight={(screenSize.width * 394) / 375}
+        >
           <Image src="/girl.svg" layout="fill" objectFit="cover" />
-        </MobileImageContainer>
-        <MobileImageContainer position="absolute" top="0" left="0" height="50%">
-          <Image
-            src="/mobile_bg_blur_section3.svg"
-            layout="fill"
-            objectFit="cover"
-          />
         </MobileImageContainer>
       </MobileIndexSection>
 
       {/* Section 4 */}
       <MobileIndexSection bgColor="#000" padding="40px 0 0 0">
-        <MobileContentContainer
-          position="relative"
-          marginLeft={24}
-          marginRight={24}
-          minHeight={210}
-        >
+        <MobileContentContainer position="relative" padding="0 24px">
           <Text
             fontSize={36}
             lineHeight={42}
@@ -358,9 +352,9 @@ function MobileIndex(): JSX.Element {
         <MobileImageContainer
           position="relative"
           marginTop="10px"
-          minHeight={591}
+          minHeight={(screenSize.width * 197) / 125}
         >
-          <Image src="/hand.svg" priority layout="fill" objectFit="cover" />
+          <Image src="/hand.png" priority layout="fill" />
         </MobileImageContainer>
       </MobileIndexSection>
 
@@ -369,11 +363,7 @@ function MobileIndex(): JSX.Element {
         bgColor="linear-gradient(231deg, #307EFE 9.31%, #7C2AE8 77.62%)"
         padding="40px 0 0 0"
       >
-        <MobileContentContainer
-          marginLeft={24}
-          marginRight={24}
-          minHeight={330}
-        >
+        <MobileContentContainer marginLeft={24} marginRight={24}>
           <Text
             fontSize={26}
             lineHeight={34}
@@ -410,7 +400,10 @@ function MobileIndex(): JSX.Element {
             </Text>
           </RoundButton>
         </MobileContentContainer>
-        <MobileImageContainer position="relative" minHeight={620}>
+        <MobileImageContainer
+          position="relative"
+          minHeight={(screenSize.width * 446) / 375}
+        >
           <Image src="/Cassey.svg" layout="fill" objectFit="cover" />
         </MobileImageContainer>
         {/* Cassey Modal */}

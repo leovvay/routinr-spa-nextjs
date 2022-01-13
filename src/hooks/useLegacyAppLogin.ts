@@ -53,6 +53,37 @@ export default function useLegacyAppLogin() {
     [enqueueSnackbar, getMe]
   );
 
+  const resetPassword = useCallback(async (data: { email: string }) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_LEGACY_API_HOST}/api/v1/auth/password`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          ...data,
+          redirect_url: `${process.env.NEXT_PUBLIC_HOST}/login`,
+        }),
+        headers: {
+          'content-type': 'application/json',
+          accept: 'application/json',
+        },
+      }
+    );
+
+    const result: { success: boolean; error: null | string } = {
+      success: false,
+      error: null,
+    };
+
+    if (response.ok) {
+      result.success = true;
+    } else {
+      const { errors } = await response.json();
+      [result.error] = errors;
+    }
+
+    return result;
+  }, []);
+
   useEffect(() => {
     if (currentUser && redirectTarget) {
       window.location.href = redirectTarget;
@@ -75,6 +106,7 @@ export default function useLegacyAppLogin() {
 
       if (query.oauth_registration)
         router.push('/register/complete-registration');
+      else if (query.reset_password) router.push('/account');
       else if (redirectTarget) {
         window.location.href = redirectTarget;
         clearRedirectTarget();
@@ -86,5 +118,6 @@ export default function useLegacyAppLogin() {
     fbAuthLink,
     googleAuthLink,
     login,
+    resetPassword,
   };
 }

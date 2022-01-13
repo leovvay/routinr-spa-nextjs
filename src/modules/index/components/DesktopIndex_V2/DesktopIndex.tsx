@@ -4,12 +4,16 @@ import Text from '@components/Text';
 import Image from '@components/Image';
 import RoundButton from '@components/RoundButton';
 import CasseyModal from '@components/CasseyModal';
+import Animation from '@components/Animation';
+import { useWindowSize } from '@hooks';
 
 import {
   DesktopIndexContainer,
   Section,
   ImageContainer,
   ContentContainer,
+  Container,
+  AbsoluteContainer,
 } from './DesktopIndex.styled';
 
 function DesktopIndex(): JSX.Element {
@@ -26,6 +30,8 @@ function DesktopIndex(): JSX.Element {
     e.preventDefault();
     window.location.href = '/register';
   };
+
+  const screenSize = useWindowSize();
 
   return (
     <DesktopIndexContainer>
@@ -64,8 +70,10 @@ function DesktopIndex(): JSX.Element {
       </Section>
 
       <Section bgColor="black">
-        <ImageContainer width={50} height={80} relative>
-          <Image src="/section-2-phone.png" layout="fill" objectFit="contain" />
+        <ImageContainer width="50%" isFlex height={80} top={10} relative>
+          <Container style={{ width: '357px', height: '720px' }}>
+            <Image src="/section-2-phone.png" width={357} height={720} />
+          </Container>
         </ImageContainer>
         <ImageContainer>
           <Image src="/bg_blur_2.svg" layout="fill" objectFit="cover" />
@@ -118,11 +126,21 @@ function DesktopIndex(): JSX.Element {
       </Section>
 
       <Section background="linear-gradient(90deg, #bc2c9e 0%, #473196 100%)">
-        <ImageContainer relative>
+        <ImageContainer
+          relative
+          height={
+            screenSize.width < 1440 ? (screenSize.width / 1.6 / 900) * 100 : 0
+          }
+          top={
+            screenSize.width < 1440
+              ? 100 - (screenSize.width / 1.6 / 900) * 100
+              : 0
+          }
+        >
           <Image
             src="/section-3-yoga-woman.png"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
           />
         </ImageContainer>
         <ContentContainer
@@ -157,48 +175,66 @@ function DesktopIndex(): JSX.Element {
         </ContentContainer>
       </Section>
 
-      <Section bgColor="black">
-        <ImageContainer width={50} relative>
-          <Image
-            src="/holding-phone-mockup.png"
-            layout="fill"
-            objectFit="contain"
-          />
-        </ImageContainer>
-        <ContentContainer width={35} position="relative">
-          <Text
-            fontSize={48}
-            weight={700}
-            lineHeight={56}
-            color="var(--text-landing-white)"
-            letterSpacing="-0.04em"
-            fontFamily="var(--font-secondary)"
-          >
-            Routinr is a{' '}
-            <Text
-              fontSize={48}
-              weight={700}
-              lineHeight={56}
-              color="var(--text-landing-pink)"
-              letterSpacing="-0.04em"
-              fontFamily="var(--font-secondary)"
+      <Container>
+        <Section isFullHeight bgColor="black" isSticky minHeight={890}>
+          <AbsoluteContainer>
+            <ImageContainer
+              relative
+              width="700px"
+              paddingTop="calc(100vh - 890px)"
             >
-              social destination
-            </Text>{' '}
-            that turns mindless scrolling into engaging, premium subscription
-            content.
-          </Text>
-        </ContentContainer>
+              <Image src="/holding-phone-mockup.png" width={700} height={890} />
+            </ImageContainer>
+            <div
+              style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ContentContainer position="relative" marginLeft="5%">
+                <Text
+                  fontSize={48}
+                  weight={700}
+                  lineHeight={56}
+                  color="var(--text-landing-white)"
+                  letterSpacing="-0.04em"
+                  fontFamily="var(--font-secondary)"
+                >
+                  Routinr is a{' '}
+                  <Text
+                    fontSize={48}
+                    weight={700}
+                    lineHeight={56}
+                    color="var(--text-landing-pink)"
+                    letterSpacing="-0.04em"
+                    fontFamily="var(--font-secondary)"
+                  >
+                    social destination
+                  </Text>{' '}
+                  that turns mindless scrolling into engaging, premium
+                  subscription content.
+                </Text>
+              </ContentContainer>
+            </div>
+          </AbsoluteContainer>
 
-        <ImageContainer>
-          <Image src="/bg_blur_4.svg" layout="fill" objectFit="cover" />
-        </ImageContainer>
-      </Section>
+          <ImageContainer>
+            <Image src="/bg_blur_4.svg" layout="fill" objectFit="cover" />
+          </ImageContainer>
+          <Animation />
+        </Section>
+        <div style={{ width: '50vw', height: '50vh' }} />
+      </Container>
 
-      <Section background="linear-gradient(231deg, #307efe 9.31%, #7c2ae8 77.62%)">
+      <Section
+        background="linear-gradient(231deg, #307efe 9.31%, #7c2ae8 77.62%)"
+        noGap
+      >
         <ContentContainer
           position="relative"
-          width={35}
+          width={30}
           marginLeft="10%"
           gap={32}
         >
@@ -237,7 +273,7 @@ function DesktopIndex(): JSX.Element {
             </Text>
           </RoundButton>
         </ContentContainer>
-        <ImageContainer width={60} relative>
+        <ImageContainer width="60%" relative>
           <Image src="/cassey.png" layout="fill" objectFit="contain" />
         </ImageContainer>
 
@@ -255,9 +291,7 @@ function DesktopIndex(): JSX.Element {
           />
         </ImageContainer>
         <ImageContainer>
-          <div>
-            <Image src="/bg_blur_6.svg" layout="fill" objectFit="cover" />
-          </div>
+          <Image src="/bg_blur_6.svg" layout="fill" objectFit="cover" />
         </ImageContainer>
         <ContentContainer
           position="absolute"

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TextLight } from '@components/Text';
 import LinkTo from '@components/LinkTo';
-import { useUser, useIsMobileVersion } from '@hooks';
+import { useIsTabletVersion } from '@hooks';
 
 import {
   FooterContainer,
@@ -12,36 +12,34 @@ import {
 } from './Footer.styled';
 
 function Footer(): JSX.Element {
-  const { currentUser } = useUser();
-  const showMobileVersion = useIsMobileVersion();
+  const showTabletVersion = useIsTabletVersion();
 
   return (
     <FooterContainer>
       <MenuContainer>
         <MenuList>
-          {!currentUser && (
-            <MenuItem>
-              <LinkTo href="/influencers">
-                <TextLight
-                  size="bodySmallBold"
-                  fontSize={showMobileVersion ? 18 : 24}
-                  weight={600}
-                  lineHeight={showMobileVersion ? 24 : 30}
-                  letterSpacing="-0.02em"
-                  color="#FAFAFF"
-                >
-                  Influencers
-                </TextLight>
-              </LinkTo>
-            </MenuItem>
-          )}
+          <MenuItem>
+            <LinkTo href="/influencers">
+              <TextLight
+                size="bodySmallBold"
+                fontSize={showTabletVersion ? 18 : 24}
+                weight={600}
+                lineHeight={showTabletVersion ? 24 : 30}
+                letterSpacing="-0.02em"
+                color="#FAFAFF"
+              >
+                Influencers
+              </TextLight>
+            </LinkTo>
+          </MenuItem>
+
           <MenuItem>
             <LinkTo href="https://blog.routinr.org" target="_blank">
               <TextLight
                 size="bodySmallBold"
-                fontSize={showMobileVersion ? 18 : 24}
+                fontSize={showTabletVersion ? 18 : 24}
                 weight={600}
-                lineHeight={showMobileVersion ? 24 : 30}
+                lineHeight={showTabletVersion ? 24 : 30}
                 letterSpacing="-0.02em"
                 color="#FAFAFF"
               >
@@ -55,7 +53,7 @@ function Footer(): JSX.Element {
             <LinkTo href="https://routinr.zendesk.com" target="_blank">
               <TextLight
                 size="bodySmallBold"
-                fontSize={showMobileVersion ? 18 : 24}
+                fontSize={showTabletVersion ? 18 : 24}
                 weight={600}
                 lineHeight={30}
                 letterSpacing="-0.02em"
@@ -69,9 +67,9 @@ function Footer(): JSX.Element {
             <LinkTo href="/legal-text/terms">
               <TextLight
                 size="bodySmallBold"
-                fontSize={showMobileVersion ? 18 : 24}
+                fontSize={showTabletVersion ? 18 : 24}
                 weight={600}
-                lineHeight={showMobileVersion ? 24 : 30}
+                lineHeight={showTabletVersion ? 24 : 30}
                 letterSpacing="-0.02em"
                 color="#FAFAFF"
               >
@@ -83,7 +81,7 @@ function Footer(): JSX.Element {
             <LinkTo href="/legal-text">
               <TextLight
                 size="bodySmallBold"
-                fontSize={showMobileVersion ? 18 : 24}
+                fontSize={showTabletVersion ? 18 : 24}
                 weight={600}
                 lineHeight={30}
                 letterSpacing="-0.02em"
@@ -99,9 +97,9 @@ function Footer(): JSX.Element {
             <LinkTo href="https://www.facebook.com/routinr" target="_blank">
               <TextLight
                 size="bodySmallBold"
-                fontSize={showMobileVersion ? 18 : 24}
+                fontSize={showTabletVersion ? 18 : 24}
                 weight={600}
-                lineHeight={showMobileVersion ? 24 : 30}
+                lineHeight={showTabletVersion ? 24 : 30}
                 letterSpacing="-0.02em"
                 color="#FAFAFF"
               >
@@ -113,9 +111,9 @@ function Footer(): JSX.Element {
             <LinkTo href="https://www.instagram.com/routinr/" target="_blank">
               <TextLight
                 size="bodySmallBold"
-                fontSize={showMobileVersion ? 18 : 24}
+                fontSize={showTabletVersion ? 18 : 24}
                 weight={600}
-                lineHeight={showMobileVersion ? 24 : 30}
+                lineHeight={showTabletVersion ? 24 : 30}
                 letterSpacing="-0.02em"
                 color="#FAFAFF"
               >
@@ -127,9 +125,9 @@ function Footer(): JSX.Element {
             <LinkTo href="https://twitter.com/Routinr" target="_blank">
               <TextLight
                 size="bodySmallBold"
-                fontSize={showMobileVersion ? 18 : 24}
+                fontSize={showTabletVersion ? 18 : 24}
                 weight={600}
-                lineHeight={showMobileVersion ? 24 : 30}
+                lineHeight={showTabletVersion ? 24 : 30}
                 letterSpacing="-0.02em"
                 color="#FAFAFF"
               >

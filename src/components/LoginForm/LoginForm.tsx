@@ -3,12 +3,18 @@ import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
 
 import SignUpWithEmail from '@components/LoginForm/components/SignUpWithEmail';
+import PasswordReset from '@components/LoginForm/components/PasswordReset';
 
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import CompleteRegistration from './components/CompleteRegistration';
 
-type AuthStep = 'login' | 'signUp' | 'emailSignUp' | 'completeRegistration';
+type AuthStep =
+  | 'login'
+  | 'signUp'
+  | 'emailSignUp'
+  | 'completeRegistration'
+  | 'resetPassword';
 
 interface LoginFormProps {
   initialStep?: AuthStep;
@@ -36,6 +42,7 @@ function LoginForm({ initialStep }: Props): JSX.Element {
         <SignUpWithEmail onSignIn={() => setStep('login')} />
       )}
       {step === 'completeRegistration' && <CompleteRegistration />}
+      {step === 'resetPassword' && <PasswordReset />}
     </Stack>
   );
 }

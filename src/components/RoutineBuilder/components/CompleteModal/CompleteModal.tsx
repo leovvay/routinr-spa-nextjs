@@ -11,7 +11,7 @@ import { useSnackbar } from 'notistack';
 
 import { Routine } from '@store/services/routines';
 import Text from '@components/Text';
-import { LinkToLegacyApp } from '@components/LinkTo';
+import LinkTo from '@components/LinkTo';
 import Touchable from '@components/Touchable';
 import { getShareURL } from '@utils';
 
@@ -100,7 +100,7 @@ function CompleteModal({
         </CompleteModalGuideLink>
       </CompleteModalHelpText>
       <CompleteModalActions>
-        <LinkToLegacyApp href="/dashboard">Back to dashboard</LinkToLegacyApp>
+        <LinkTo href="/dashboard">Back to dashboard</LinkTo>
         <Touchable onClick={() => router.reload()}>
           Build another routine
         </Touchable>

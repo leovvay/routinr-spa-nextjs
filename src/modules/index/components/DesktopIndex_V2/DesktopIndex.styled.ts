@@ -3,20 +3,30 @@ import styled, { css } from 'styled-components';
 export const DesktopIndexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  posotion: relative;
+  position: relative;
   margin-top: -72px;
 `;
 
 interface SectionProps {
   bgColor?: string;
   background?: string;
+  isFullHeight?: Boolean;
+  isSticky?: Boolean;
+  minHeight?: number;
+  noGap?: Boolean;
 }
 
 export const Section = styled.section<SectionProps>`
-  height: 900px;
-  position: relative;
+  ${({ minHeight }) =>
+    minHeight &&
+    css`
+      min-height: 890px;
+    `}
+  height: ${({ isFullHeight }) => (isFullHeight ? '100vh' : '900px')};
+  ${({ isSticky }) =>
+    isSticky ? 'position: sticky; top: 0;' : 'position: relative;'}
   display: flex;
-  gap: 20px;
+  gap: ${({ noGap }) => (noGap ? '0px' : '20px')};
   ${({ bgColor }) =>
     bgColor &&
     css`
@@ -30,7 +40,7 @@ export const Section = styled.section<SectionProps>`
 `;
 
 interface ImageContainerProps {
-  width?: number;
+  width?: string;
   height?: number;
   display?: string;
   justifyContent?: string;
@@ -38,15 +48,27 @@ interface ImageContainerProps {
   right?: Boolean;
   relative?: Boolean;
   marginLeft?: number;
+  paddingTop?: string;
+  isFlex?: Boolean;
+  top?: number;
 }
 
 export const ImageContainer = styled.div<ImageContainerProps>`
-  ${({ width }) => (width ? `width: ${width}%;` : `width: 100%;`)}
-  ${({ height }) =>
-    height
-      ? `height: ${height}%; top: ${(100 - height) / 2}%;`
-      : `height: 100%;`}
+  ${({ isFlex }) =>
+    isFlex &&
+    css`
+      display: flex;
+      justify-content: center;
+    `}
+  width: ${({ width }) => (width ? `${width}` : `100%`)};
+  height: ${({ height }) => (height ? `${height}%` : `100%`)};
+  ${({ top }) =>
+    top &&
+    css`
+      top: ${top}%;
+    `}
   position: ${({ relative }) => (relative ? 'relative;' : 'absolute;')}
+  
   ${({ right }) =>
     right &&
     css`
@@ -56,6 +78,11 @@ export const ImageContainer = styled.div<ImageContainerProps>`
     marginLeft &&
     css`
       margin-left: ${marginLeft}%;
+    `}
+  ${({ paddingTop }) =>
+    paddingTop &&
+    css`
+      padding-top: ${paddingTop};
     `}
 `;
 
@@ -73,7 +100,6 @@ interface ContentContainerProps {
   width?: number;
   height?: number;
   position?: string;
-  flex?: string;
   right?: string;
   gap?: number;
   padding?: string;
@@ -86,17 +112,7 @@ export const ContentContainer = styled.div<ContentContainerProps>`
       position: ${position};
     `}
   display: flex;
-  ${({ flex }) =>
-    flex &&
-    css`
-      flex: ${flex};
-    `}
-  ${({ height }) =>
-    height
-      ? css`
-          height: ${height}px;
-        `
-      : `height: 100%;`}
+  height: ${({ height }) => (height ? `${height}px;` : `100%;`)}
   ${({ right }) =>
     right &&
     css`
@@ -106,7 +122,7 @@ export const ContentContainer = styled.div<ContentContainerProps>`
   justify-content: center;
   color: var(--text-landing-white);
   align-items: flex-start;
-  ${({ padding }) => (padding ? `padding: ${padding};` : `padding: 0;`)}
+  padding: ${({ padding }) => (padding ? `${padding}` : `padding: 0`)};
   ${({ width }) =>
     width &&
     css`
@@ -127,5 +143,23 @@ export const ContentContainer = styled.div<ContentContainerProps>`
     css`
       margin-right: ${marginRight};
     `}
-  ${({ gap }) => (gap ? `gap: ${gap}px;` : `gap: 24px;`)}
+  gap: ${({ gap }) => (gap ? `${gap}px` : `24px`)};
+`;
+
+export const Container = styled.div`
+  position: relative;
+`;
+
+interface AbsoluteContainerProps {
+  isGap?: Boolean;
+}
+export const AbsoluteContainer = styled.div<AbsoluteContainerProps>`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  ${({ isGap }) =>
+    isGap &&
+    css`
+      gap: 20px;
+    `};
 `;

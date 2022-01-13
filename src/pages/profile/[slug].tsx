@@ -67,7 +67,7 @@ interface ProfilePageProps {
 function ProfilePage({ initialInfluencer }: ProfilePageProps) {
   const isMobile = useIsMobileVersion();
   const router = useRouter();
-  const { slug, purchasing, membershipId } = router.query;
+  const { slug, purchasing, membershipId, subscribe = false } = router.query;
   const { enqueueSnackbar } = useSnackbar();
   const { currentUser } = useUser();
   const [, setRedirectTarget, removeRedirectTarget] = useRedirectTarget();
@@ -81,7 +81,7 @@ function ProfilePage({ initialInfluencer }: ProfilePageProps) {
   const routines = useInfinityInfluencersRoutinesQuery(Number(influencer.id));
   const posts = useInfinityInfluencersPostsQuery(Number(influencer.id));
 
-  const [openOptions, setOpenOptions] = useState(false);
+  const [openOptions, setOpenOptions] = useState(subscribe as boolean);
   const [membershipForOptions, setMembershipForOptions] = useState(
     influencer.memberships
   );

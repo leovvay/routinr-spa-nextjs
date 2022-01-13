@@ -47,7 +47,6 @@ import ListItem, { ListItemProps } from '@mui/material/ListItem';
 
 import Image from '@components/Image';
 import Touchable from '@components/Touchable';
-import { LinkToLegacyApp } from '@components/LinkTo';
 
 export const MobileHeaderContainer = styled.div`
   display: flex;
@@ -76,7 +75,8 @@ export const Footer = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding: 16px 0;
+  padding: 16px;
+  gap: 16px;
 `;
 
 export const LogoutButton = styled(Touchable)`
@@ -92,8 +92,4 @@ export const Drawer = styled(MuiDrawer)`
     font-size: 16px;
     max-width: 400px;
   }
-`;
-
-export const LogoLink = styled(LinkToLegacyApp)`
-  display: flex;
 `;

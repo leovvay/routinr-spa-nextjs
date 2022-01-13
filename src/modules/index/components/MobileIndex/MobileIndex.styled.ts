@@ -10,6 +10,10 @@ export const MobileIndexSection = styled.section`
   padding-bottom: 16px;
   border-bottom: 1px solid var(--main-border-color);
   margin-bottom: 16px;
+
+  & ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const MobileIndexSectionTitle = styled(Stack)`

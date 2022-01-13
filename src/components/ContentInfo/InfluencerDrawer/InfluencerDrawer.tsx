@@ -4,20 +4,12 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 import { User } from '@store/services/users';
 import Loader from '@components/Loader';
-import {
-  InfluencerDrawerHandle,
-  InfluencerDrawerHeader,
-  InfluencerDrawerInfluencerInfo,
-  InfluencerDrawerMoreButton,
-  InfluencerDrawerSubscribeButton,
-  InfluencerDrawerSubscribeSection,
-} from '@components/ContentInfo/InfluencerDrawer/InfluencerDrawer.styled';
-import ButtonShare from '@components/ButtonShare/ButtonShare';
+import ButtonShare from '@components/ButtonShare';
 import Text from '@components/Text';
-import StatisticItem from '@components/StatisticItem/StatisticItem';
-import Followers from '@components/Followers/Followers';
+import StatisticItem from '@components/StatisticItem';
+import Followers from '@components/Followers';
 import DescriptionSection from '@components/ContentInfo/DescriptionSection';
-import { LinkToLegacyApp } from '@components/LinkTo';
+import LinkTo from '@components/LinkTo';
 import Image from '@components/Image';
 
 import { PageLoaderContainer } from '@modules/index.styled';
@@ -31,6 +23,14 @@ import {
   ContentInfoDrawerBackButton,
   ContentInfoDrawerStatistic,
 } from '../ContentInfo.styled';
+import {
+  InfluencerDrawerHandle,
+  InfluencerDrawerHeader,
+  InfluencerDrawerInfluencerInfo,
+  InfluencerDrawerMoreButton,
+  InfluencerDrawerSubscribeButton,
+  InfluencerDrawerSubscribeSection,
+} from './InfluencerDrawer.styled';
 
 interface InfluencerDrawerProps {
   open: boolean;
@@ -102,12 +102,12 @@ function InfluencerDrawer({
               </InfluencerDrawerMoreButton>
             </ContentInfoDialogContentSection>
             <InfluencerDrawerSubscribeSection>
-              <LinkToLegacyApp href={`/memberships/${influencer.slug}`}>
+              <LinkTo href={`/profile/${influencer.slug}?subscribe=true`}>
                 <InfluencerDrawerSubscribeButton>
                   <Image src="/subscribe-icon.svg" width={22} height={17} />
                   Subscribe
                 </InfluencerDrawerSubscribeButton>
-              </LinkToLegacyApp>
+              </LinkTo>
             </InfluencerDrawerSubscribeSection>
           </ContentInfoDialogContent>
         </>

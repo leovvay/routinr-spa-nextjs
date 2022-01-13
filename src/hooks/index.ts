@@ -1,4 +1,5 @@
 export { default as useIsMobileVersion } from './useIsMobileVersion';
+export { default as useIsTabletVersion } from './useIsTabletVersion';
 export { default as useInputState } from './useInputState';
 export { default as useCloudinaryWidget } from './useCloudinaryWidget';
 export { default as useDebouncedState } from './useDebouncedState';
@@ -14,5 +15,7 @@ export { default as useLegacyAppLogin } from './useLegacyAppLogin';
 export { default as useRedirectTarget } from './useRedirectTarget';
 export { default as useAppSelector } from './useAppSelector';
 export { default as useAppDispatch } from './useAppDispatch';
+export { default as useEventListener } from './useEventListener';
+export { default as useWindowSize } from './useWindowSize';
 
 export type { Attachment } from './usePlannedActivityMediaInfo';

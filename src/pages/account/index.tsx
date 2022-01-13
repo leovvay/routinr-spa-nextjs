@@ -31,7 +31,11 @@ interface PasswordChangeForm {
 
 const schema = yup
   .object({
-    oldPassword: yup.string().required('Old Password is required'),
+    oldPassword: yup
+      .string()
+      .required(
+        "Old Password is required. If you're resetting it just type any text"
+      ),
     newPassword: yup
       .string()
       .min(8, 'Password is too short - should be 8 chars minimum.')

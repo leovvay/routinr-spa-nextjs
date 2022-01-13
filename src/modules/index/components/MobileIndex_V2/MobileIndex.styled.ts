@@ -131,7 +131,7 @@ export const MobileImageContainer = styled.div<MobileImageContainerProps>`
     css`
       left: ${left};
     `}
-  ${({ width }) => (width ? `width: ${width};` : `width: 100%;`)}
+  width: ${({ width }) => (width ? `${width}` : `100%`)};
   ${({ minHeight }) =>
     minHeight &&
     css`
@@ -207,9 +207,9 @@ export const CardRow = styled.div<CardRowProps>`
   ${({ padding }) =>
     padding &&
     css`
-      padding: 10px 0;
+      padding: 10px 15px;
     `}
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   ${({ bgColor }) =>
     bgColor &&

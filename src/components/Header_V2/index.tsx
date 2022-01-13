@@ -3,7 +3,7 @@ import React from 'react';
 import NoSsr from '@mui/material/NoSsr';
 
 import LinkTo from '@components/LinkTo';
-import { useIsMobileVersion } from '@hooks';
+import { useIsTabletVersion } from '@hooks';
 
 import GuestNav from './components/GuestNav';
 import MobileHeader from './components/MobileHeader';
@@ -16,12 +16,12 @@ import {
 } from './Header.styled';
 
 export default function Header(): JSX.Element {
-  const showMobileVersion = useIsMobileVersion();
+  const showTabletVersion = useIsTabletVersion();
 
   return (
-    <HeaderContainer isMobile={showMobileVersion}>
+    <HeaderContainer isMobile={showTabletVersion}>
       <NoSsr>
-        {showMobileVersion ? (
+        {showTabletVersion ? (
           <MobileHeader />
         ) : (
           <HeaderContent>
