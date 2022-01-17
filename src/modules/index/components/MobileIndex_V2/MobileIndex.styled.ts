@@ -9,12 +9,19 @@ export const MobileIndexContainer = styled.main`
 interface MobileIndexSectionProps {
   bgColor?: string;
   padding?: string;
+  isSticky?: Boolean;
+  height?: string;
 }
 
 export const MobileIndexSection = styled.section<MobileIndexSectionProps>`
   width: 100%;
   min-height: 812px;
-  position: relative;
+  ${({ height }) =>
+    height &&
+    css`
+      height: ${height};
+    `}
+  position: ${({ isSticky }) => (isSticky ? 'sticky; top: 0;' : 'relative')};
   ${({ bgColor }) =>
     bgColor &&
     css`
@@ -75,12 +82,12 @@ export const MobileContentContainer = styled.div<MobileContentContainerProps>`
   ${({ marginLeft }) =>
     marginLeft &&
     css`
-      margin-left: ${marginLeft}px;
+      margin-left: ${marginLeft}%;
     `}
   ${({ marginRight }) =>
     marginRight &&
     css`
-      margin-right: ${marginRight}px;
+      margin-right: ${marginRight}%;
     `}
   ${({ minHeight }) =>
     minHeight &&
@@ -229,4 +236,21 @@ export const CardColumn = styled.div`
   gap: 4px;
   justify-content: center;
   align-items: start;
+`;
+
+export const AbsoluteContainerMobile = styled.div`
+  position: absolute;
+  top: 0;
+`;
+
+interface StickyContainerProps {
+  height: number;
+}
+
+export const StickyContainer = styled.div<StickyContainerProps>`
+  position: sticky;
+  top: 0;
+  height: ${({ height }) => `${height}px`};
+  display: flex;
+  justify-content: center;
 `;

@@ -106,7 +106,8 @@ export default function useLegacyAppLogin() {
 
       if (query.oauth_registration)
         router.push('/register/complete-registration');
-      else if (query.reset_password) router.push('/account');
+      else if (query.reset_password)
+        router.push('/account?reset_password=true');
       else if (redirectTarget) {
         window.location.href = redirectTarget;
         clearRedirectTarget();

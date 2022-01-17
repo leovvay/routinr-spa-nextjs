@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 
 import * as yup from 'yup';
 import TextField from '@mui/material/TextField';
@@ -29,28 +30,40 @@ interface PasswordChangeForm {
   newPasswordConfirm: string;
 }
 
-const schema = yup
+const commonScheme = {
+  newPassword: yup
+    .string()
+    .min(8, 'Password is too short - should be 8 chars minimum.')
+    .required('New Password is required'),
+  newPasswordConfirm: yup
+    .string()
+    .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
+    .required('Password confirmation is required'),
+};
+
+const resetPaswordSchema = yup.object(commonScheme).required();
+
+const updatePasswordSchema = yup
   .object({
     oldPassword: yup
       .string()
       .required(
         "Old Password is required. If you're resetting it just type any text"
       ),
-    newPassword: yup
-      .string()
-      .min(8, 'Password is too short - should be 8 chars minimum.')
-      .required('New Password is required'),
-    newPasswordConfirm: yup
-      .string()
-      .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
-      .required('Password confirmation is required'),
+    ...commonScheme,
   })
   .required();
 
 function Account() {
+  const router = useRouter();
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { reset_password = false } = router.query;
+
   const { currentUser } = useUser();
   const { control, handleSubmit, reset } = useForm<PasswordChangeForm>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(
+      reset_password ? resetPaswordSchema : updatePasswordSchema
+    ),
   });
   const { enqueueSnackbar } = useSnackbar();
 
@@ -58,7 +71,7 @@ function Account() {
 
   const handlePasswordChange = async (data: PasswordChangeForm) => {
     const body = {
-      password: data.oldPassword,
+      password: data.oldPassword ?? '',
       new_password: data.newPassword,
     };
     const headers = {
@@ -119,22 +132,24 @@ function Account() {
               <Text size="h5" weight={600}>
                 Change password
               </Text>
-              <Controller
-                name="oldPassword"
-                control={control}
-                render={({ field, fieldState }) => (
-                  <TextField
-                    {...field}
-                    error={fieldState.invalid}
-                    helperText={fieldState.error?.message}
-                    placeholder="Old password"
-                    label="Old password"
-                    variant="outlined"
-                    type="password"
-                    fullWidth
-                  />
-                )}
-              />
+              {!reset_password && (
+                <Controller
+                  name="oldPassword"
+                  control={control}
+                  render={({ field, fieldState }) => (
+                    <TextField
+                      {...field}
+                      error={fieldState.invalid}
+                      helperText={fieldState.error?.message}
+                      placeholder="Old password"
+                      label="Old password"
+                      variant="outlined"
+                      type="password"
+                      fullWidth
+                    />
+                  )}
+                />
+              )}
               <Controller
                 name="newPassword"
                 control={control}

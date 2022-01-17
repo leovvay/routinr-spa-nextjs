@@ -17,5 +17,6 @@ export { default as useAppSelector } from './useAppSelector';
 export { default as useAppDispatch } from './useAppDispatch';
 export { default as useEventListener } from './useEventListener';
 export { default as useWindowSize } from './useWindowSize';
+export { default as useElementSize } from './useElementSize';
 
 export type { Attachment } from './usePlannedActivityMediaInfo';
